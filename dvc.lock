@@ -1,0 +1,86 @@
+schema: '2.0'
+stages:
+  generate:
+    cmd: uv run generate-data
+    deps:
+    - path: params.yaml
+      hash: md5
+      md5: c40404b5c3a9ad485a17fbc25c4117aa
+      size: 713
+    - path: src/tech_challenge_02_recommender/config.py
+      hash: md5
+      md5: a565d339ae08ef86a89b65cb03bb5d27
+      size: 1167
+    - path: src/tech_challenge_02_recommender/data.py
+      hash: md5
+      md5: f5865bab71eb56f32bc0ddda15b6c04a
+      size: 6292
+    outs:
+    - path: data/raw/interactions.csv
+      hash: md5
+      md5: b6de983df3c67de83704e54e24a2a079
+      size: 248531
+  prepare:
+    cmd: uv run prepare-data
+    deps:
+    - path: data/raw/interactions.csv
+      hash: md5
+      md5: b6de983df3c67de83704e54e24a2a079
+      size: 248531
+    - path: params.yaml
+      hash: md5
+      md5: c40404b5c3a9ad485a17fbc25c4117aa
+      size: 713
+    - path: src/tech_challenge_02_recommender/data.py
+      hash: md5
+      md5: f5865bab71eb56f32bc0ddda15b6c04a
+      size: 6292
+    outs:
+    - path: data/processed/test.csv
+      hash: md5
+      md5: e69f92c992ab43c9069260c3d9d9b6da
+      size: 49747
+    - path: data/processed/train.csv
+      hash: md5
+      md5: 4ec9c934b5b6d1c1adef4b47dcc4f68a
+      size: 198825
+  train:
+    cmd: uv run train-model
+    deps:
+    - path: data/processed/test.csv
+      hash: md5
+      md5: e69f92c992ab43c9069260c3d9d9b6da
+      size: 49747
+    - path: data/processed/train.csv
+      hash: md5
+      md5: 4ec9c934b5b6d1c1adef4b47dcc4f68a
+      size: 198825
+    - path: params.yaml
+      hash: md5
+      md5: c40404b5c3a9ad485a17fbc25c4117aa
+      size: 713
+    - path: src/tech_challenge_02_recommender/factory.py
+      hash: md5
+      md5: 74711cd874cf6cbee52a635bf8a8b3f8
+      size: 1257
+    - path: src/tech_challenge_02_recommender/models.py
+      hash: md5
+      md5: d2d53844861cff555f4dc988b05ea0ce
+      size: 2436
+    - path: src/tech_challenge_02_recommender/train.py
+      hash: md5
+      md5: 487e3b2dfb2f5eec237f713326404074
+      size: 12324
+    outs:
+    - path: models/model_metadata.json
+      hash: md5
+      md5: d137ed34fda28b972f9c6d44544ef65b
+      size: 313
+    - path: models/recommender_model.pt
+      hash: md5
+      md5: bce9b975f827fd78d47eda72403e8699
+      size: 119827
+    - path: reports/metrics.json
+      hash: md5
+      md5: cf2d6904f105dbfb23b6034fcf51a685
+      size: 149

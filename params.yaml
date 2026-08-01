@@ -1,0 +1,35 @@
+project:
+  name: tech-challenge-02-recommender
+  random_seed: 42
+
+data:
+  num_users: 500
+  num_items: 200
+  num_categories: 12
+  interactions_per_user: 20
+  test_size: 0.20
+  raw_path: data/raw/interactions.csv
+  train_path: data/processed/train.csv
+  test_path: data/processed/test.csv
+
+
+model:
+  type: neural
+  embedding_dim: 32
+  hidden_dim: 64
+  dropout: 0.10
+
+training:
+  epochs: 40
+  batch_size: 128
+  learning_rate: 0.003
+  patience: 8
+
+mlflow:
+  experiment_name: ecommerce-recommender
+  registered_model_name: EcommerceNeuralRecommender
+
+artifacts:
+  model_path: models/recommender_model.pt
+  metadata_path: models/model_metadata.json
+  metrics_path: reports/metrics.json

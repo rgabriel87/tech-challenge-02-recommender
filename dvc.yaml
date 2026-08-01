@@ -1,0 +1,35 @@
+stages:
+  generate:
+    cmd: uv run generate-data
+    deps:
+      - src/tech_challenge_02_recommender/data.py
+      - src/tech_challenge_02_recommender/config.py
+      - params.yaml
+    outs:
+      - data/raw/interactions.csv
+
+  prepare:
+    cmd: uv run prepare-data
+    deps:
+      - data/raw/interactions.csv
+      - src/tech_challenge_02_recommender/data.py
+      - params.yaml
+    outs:
+      - data/processed/train.csv
+      - data/processed/test.csv
+
+  train:
+    cmd: uv run train-model
+    deps:
+      - data/processed/train.csv
+      - data/processed/test.csv
+      - src/tech_challenge_02_recommender/models.py
+      - src/tech_challenge_02_recommender/factory.py
+      - src/tech_challenge_02_recommender/train.py
+      - params.yaml
+    outs:
+      - models/recommender_model.pt
+      - models/model_metadata.json
+    metrics:
+      - reports/metrics.json:
+          cache: false
