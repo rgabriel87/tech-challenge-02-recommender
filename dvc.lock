@@ -9,12 +9,12 @@ stages:
       size: 713
     - path: src/tech_challenge_02_recommender/config.py
       hash: md5
-      md5: a565d339ae08ef86a89b65cb03bb5d27
-      size: 1167
+      md5: b320c5b5e01e86f68dbfad01a22c035e
+      size: 1165
     - path: src/tech_challenge_02_recommender/data.py
       hash: md5
-      md5: f5865bab71eb56f32bc0ddda15b6c04a
-      size: 6292
+      md5: e04695b4ad1c44a7a3a403582be46bc6
+      size: 6290
     outs:
     - path: data/raw/interactions.csv
       hash: md5
@@ -33,8 +33,8 @@ stages:
       size: 713
     - path: src/tech_challenge_02_recommender/data.py
       hash: md5
-      md5: f5865bab71eb56f32bc0ddda15b6c04a
-      size: 6292
+      md5: e04695b4ad1c44a7a3a403582be46bc6
+      size: 6290
     outs:
     - path: data/processed/test.csv
       hash: md5
@@ -69,8 +69,8 @@ stages:
       size: 2436
     - path: src/tech_challenge_02_recommender/train.py
       hash: md5
-      md5: 487e3b2dfb2f5eec237f713326404074
-      size: 12324
+      md5: b2689581804d81a60ea0eeacca7787c3
+      size: 12322
     outs:
     - path: models/model_metadata.json
       hash: md5
